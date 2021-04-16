@@ -4,7 +4,7 @@
     <string name="fb_login_protocol_scheme">fb502988057751522</string>
     <string name="facebook_app_id">502988057751522</string>
     <string-array name="user_array">
-        <item>Consumer</item>
+        <item>Customer</item>
         <item>Retailer</item>
         <item>Wholesaler</item>
     </string-array>

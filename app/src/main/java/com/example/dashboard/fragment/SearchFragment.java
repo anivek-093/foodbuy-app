@@ -73,7 +73,7 @@ public class SearchFragment extends Fragment {
         DataService service = RetrofitClientInstance.getRetrofitInstance()
                 .create(DataService.class);
 
-        Call<ProductsResponse> call = service.getProductByName(searchText, "retailer"); //currentUser.userType
+        Call<ProductsResponse> call = service.getProductByName(searchText, currentUser.userType); //currentUser.userType
 
         call.enqueue(new Callback<ProductsResponse>() {
             @Override
