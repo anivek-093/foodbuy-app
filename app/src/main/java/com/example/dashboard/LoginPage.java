@@ -13,6 +13,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dashboard.data.Preferences;
+import com.example.dashboard.model.User;
+import com.example.dashboard.model.UserResponseObject;
+import com.example.dashboard.network.DataService;
+import com.example.dashboard.network.RetrofitClientInstance;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.BuildConfig;
@@ -38,6 +43,10 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class LoginPage extends AppCompatActivity {
@@ -138,17 +147,7 @@ public class LoginPage extends AppCompatActivity {
 
     private void updateUI(FirebaseUser user) {
         if(user!=null) {
-            Intent intent = new Intent(LoginPage.this, Registration.class);
-            Bundle bundle = new Bundle();
-            bundle.putString("name", user.getDisplayName());
-            bundle.putString("mail", user.getEmail());
-            intent.putExtras(bundle);
-//            if(bundle==null){
-//                Toast.makeText(this, "bundle sent == null", Toast.LENGTH_SHORT).show();
-//            }
-//            Toast.makeText(this, bundle.getString("name")+"\n"+bundle.getString("mail"), Toast.LENGTH_SHORT).show();
-//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
+            getUserWithEmail(user.getEmail(), user);
         }
         else{
             Toast.makeText(this, "User = null", Toast.LENGTH_SHORT).show();
@@ -200,10 +199,11 @@ public class LoginPage extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(LoginPage.this, "Login Success", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(LoginPage.this, Registration.class);
-//                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            startActivity(intent);
+                            getUserWithEmail(user.getEmail(), user);
+//                            Toast.makeText(LoginPage.this, "Login Success", Toast.LENGTH_SHORT).show();
+//                            Intent intent = new Intent(LoginPage.this, Registration.class);
+////                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                            startActivity(intent);
                         } else {
                             Toast.makeText(LoginPage.this, "Task unsuccessful", Toast.LENGTH_SHORT).show();
                         }
@@ -217,5 +217,44 @@ public class LoginPage extends AppCompatActivity {
         if(authStateListener!=null){
             mAuth.removeAuthStateListener(authStateListener);
         }
+    }
+
+
+    public void getUserWithEmail(String email, FirebaseUser user) {
+        DataService service = RetrofitClientInstance.getRetrofitInstance()
+                .create(DataService.class);
+        Call<UserResponseObject> call = service.getUserWithEmail(email);
+
+        call.enqueue(new Callback<UserResponseObject>() {
+            @Override
+            public void onResponse(Call<UserResponseObject> call, Response<UserResponseObject> response) {
+                if(response.body().error) {
+                    Log.d(TAG, "onResponse: " + response.body().message);
+                }
+                else{
+                    if(response.body().user != null) {
+                        Preferences preferences = Preferences.getPreferences(getApplicationContext());
+                        preferences.saveUser(response.body().user);
+
+                        Intent intent = new Intent(LoginPage.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                    else {
+                        Intent intent = new Intent(LoginPage.this, Registration.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("name", user.getDisplayName());
+                        bundle.putString("mail", user.getEmail());
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserResponseObject> call, Throwable t) {
+                Log.e(TAG, "onFailure: " + t.getMessage());
+                Toast.makeText(LoginPage.this, "Some error occurred, please try again.", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

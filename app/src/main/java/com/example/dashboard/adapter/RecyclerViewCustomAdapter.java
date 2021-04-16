@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dashboard.R;
 import com.example.dashboard.model.Product;
+import com.example.dashboard.utility.MathUtility;
 import com.jakewharton.picasso.OkHttp3Downloader;
 import com.squareup.picasso.Picasso;
 
@@ -32,6 +33,7 @@ public class RecyclerViewCustomAdapter extends RecyclerView.Adapter<RecyclerView
         TextView productNameText;
         TextView productAvailableText;
         TextView productSellerText;
+        TextView productPrice;
         ImageView productImage;
 
         CustomViewHolder(View itemView) {
@@ -42,6 +44,7 @@ public class RecyclerViewCustomAdapter extends RecyclerView.Adapter<RecyclerView
             productNameText = mView.findViewById(R.id.product_name_text);
             productAvailableText = mView.findViewById(R.id.product_available_text);
             productSellerText = mView.findViewById(R.id.product_seller_text);
+            productPrice = mView.findViewById(R.id.product_price);
             productImage = mView.findViewById(R.id.product_image);
         }
 
@@ -60,6 +63,10 @@ public class RecyclerViewCustomAdapter extends RecyclerView.Adapter<RecyclerView
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
         holder.productNameText.append(productList.get(position).name);
         holder.productAvailableText.append(Float.toString(productList.get(position).quantity));
+
+        String truncatedPrice = MathUtility.truncateFloatToTwoDecimalPlaces(productList.get(position).price);
+        holder.productPrice.append(truncatedPrice);
+
         if(productList.get(position).seller != null) {
             holder.productSellerText.append(productList.get(position).seller.name);
         }

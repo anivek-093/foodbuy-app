@@ -35,4 +35,11 @@ public interface DataService {
     @Headers("Content-Type: application/json")
     @GET("/products")
     Call<ProductsResponse> getAllProducts();
+
+    @Headers("Content-Type: application/json")
+    @GET("/products")
+    Call<ProductsResponse> getProductByName(
+            @Query("productName") String productName,
+            @Query("userType") String userType
+    );
 }
