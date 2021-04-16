@@ -33,7 +33,7 @@ public class Registration extends AppCompatActivity implements AdapterView.OnIte
         mail_text = findViewById(R.id.mailtext);
 
         int loginOption = LoginPage.signInOption;
-        if(loginOption==2) {
+        if(loginOption == 2) {
             Intent intent = getIntent();
             if (intent == null) {
                 Toast.makeText(this, "intent received == null", Toast.LENGTH_SHORT).show();
@@ -44,8 +44,8 @@ public class Registration extends AppCompatActivity implements AdapterView.OnIte
                 String name = bundle.getString("name");
                 String mail = bundle.getString("mail");
 
-                name_text.setText("Name: " + name);
-                mail_text.setText("Email: " + mail);
+                name_text.setText(name);
+                mail_text.setText(mail);
             } else {
                 name_text.setText("");
                 mail_text.setText("");

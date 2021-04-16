@@ -114,7 +114,7 @@
         app:layout_constraintTop_toTopOf="@+id/mailtext" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -134,8 +134,8 @@
         android:layout_marginTop="18dp"
         android:text="Type of user:"
         android:textColor="@android:color/background_dark"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintStart_toStartOf="@+id/password"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
 
     <Spinner
@@ -148,7 +148,7 @@
         android:backgroundTintMode="add"
         android:spinnerMode="dropdown"
         app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <EditText
         android:id="@+id/storeName"
@@ -164,7 +164,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/street"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -176,7 +176,7 @@
         app:layout_constraintTop_toBottomOf="@+id/storeName" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName4"
+        android:id="@+id/city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -184,11 +184,11 @@
         android:hint="City"
         android:inputType="textPersonName"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName3"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintStart_toStartOf="@+id/street"
+        app:layout_constraintTop_toBottomOf="@+id/street" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName5"
+        android:id="@+id/state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -196,11 +196,11 @@
         android:hint="State"
         android:inputType="textPersonName"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName4"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
+        app:layout_constraintStart_toStartOf="@+id/city"
+        app:layout_constraintTop_toBottomOf="@+id/city" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName6"
+        android:id="@+id/pincode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -208,19 +208,19 @@
         android:hint="Pincode"
         android:inputType="textPersonName"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName5"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
+        app:layout_constraintStart_toStartOf="@+id/state"
+        app:layout_constraintTop_toBottomOf="@+id/state" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName7"
+        android:id="@+id/phone_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Phone Number"
-        android:inputType="textPersonName"
+        android:inputType="phone"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName6"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName6" />
+        app:layout_constraintStart_toStartOf="@+id/pincode"
+        app:layout_constraintTop_toBottomOf="@+id/pincode" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

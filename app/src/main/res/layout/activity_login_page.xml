@@ -4,48 +4,177 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipChildren="true"
+    android:clipToPadding="true"
     tools:context=".LoginPage">
 
-    <Button
-        android:id="@+id/login_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/login_now_with_google"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <TextView
-        android:id="@+id/logintext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="110dp"
-        android:text="Login to start using the app!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/fb_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="244dp"
-        android:text="Welcome To FoodBuy Shopping App!"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/exo_bold"
+        android:text="Login"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:textColor="#575757"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="360dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/exo_medium"
+        android:text="Log in with one of the following options"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fb_name" />
+
+    <TextView
+        android:id="@+id/click"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:clickable="true"
+        android:fontFamily="@font/exo_medium"
+        android:text="Contact Us!"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintStart_toEndOf="@+id/havingproblems"
+        app:layout_constraintTop_toTopOf="@+id/havingproblems" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/custom_fb_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/button_blue"
+        android:drawableStart="@drawable/com_facebook_favicon_blue"
+        android:drawablePadding="8dp"
+        android:fontFamily="@font/exo_semibold"
+        android:includeFontPadding="false"
+        android:paddingLeft="12dp"
+        android:paddingRight="16dp"
+        android:text="Login now with Facebook"
+        android:textColor="@color/blue"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/login_btn"
+        app:layout_constraintStart_toStartOf="@+id/login_btn"
+        app:layout_constraintTop_toBottomOf="@+id/login_btn" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/login_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/button_magenta"
+        android:drawableLeft="@drawable/googleg_standard_color_18"
+        android:drawablePadding="8dp"
+        android:fontFamily="@font/exo_semibold"
+        android:paddingLeft="12dp"
+        android:paddingRight="16dp"
+        android:shadowColor="@color/magenta"
+        android:text="Login now with Google"
+        android:textColor="@color/magenta"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/login_btn2"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/login_btn2"
+        app:layout_constraintTop_toBottomOf="@+id/login_btn2" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/login_btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="216dp"
+        android:background="@drawable/button_black"
+        android:drawableLeft="@drawable/ic_baseline_mail_24"
+        android:drawablePadding="8dp"
+        android:fontFamily="@font/exo_semibold"
+        android:paddingLeft="12dp"
+        android:paddingRight="16dp"
+        android:shadowColor="@color/black"
+        android:text="Login now with Email"
+        android:textColor="@color/black"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-    <com.facebook.login.widget.LoginButton
-        android:id="@+id/login_button_fb"
+    <TextView
+        android:id="@+id/havingproblems"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginStart="108dp"
-        android:layout_marginTop="280dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/exo"
+        android:text="Having problems?"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/custom_fb_btn" />
+
+    <TextView
+        android:id="@+id/Username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/exo_medium"
+        android:text="Username:"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/password_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/exo_medium"
+        android:text="Password:"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/username_entry"
+        app:layout_constraintTop_toBottomOf="@+id/username_entry" />
+
+    <EditText
+        android:id="@+id/username_entry"
+        android:layout_width="327dp"
+        android:layout_height="44dp"
+        android:ems="10"
+        android:fontFamily="@font/exo"
+        android:inputType="textPersonName"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/Username"
+        app:layout_constraintTop_toBottomOf="@+id/Username" />
+
+    <EditText
+        android:id="@+id/password_entry"
+        android:layout_width="327dp"
+        android:layout_height="44dp"
+        android:ems="10"
+        android:fontFamily="@font/exo"
+        android:inputType="textPassword"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/password_text"
+        app:layout_constraintTop_toBottomOf="@+id/password_text" />
+
+    <TextView
+        android:id="@+id/or"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/exo_bold"
+        android:text="OR"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/login_btn2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_entry" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

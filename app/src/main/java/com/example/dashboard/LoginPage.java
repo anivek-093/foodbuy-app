@@ -25,6 +25,7 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.LoggingBehavior;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.firebase.auth.FacebookAuthProvider;
@@ -44,6 +45,8 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 
+import java.util.Arrays;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -52,12 +55,11 @@ import retrofit2.Response;
 public class LoginPage extends AppCompatActivity {
 
     private GoogleSignInClient mGoogleSignInClient;
-    public Button login_btn;
+    public Button login_btn, custom_fb_btn;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
     private CallbackManager mCallbackManager;
     static int signInOption = 2;
-    protected LoginButton loginButton_fb;
     private static final String TAG = "FacebookAuthentication";
     private AccessTokenTracker accessTokenTracker;
     private static final int RC_SIGN_IN=123;
@@ -74,11 +76,12 @@ public class LoginPage extends AppCompatActivity {
         AppEventsLogger.activateApp(this);
 
         mAuth = FirebaseAuth.getInstance();
-
-        loginButton_fb = findViewById(R.id.login_button_fb);
-        loginButton_fb.setReadPermissions("email", "public_profile");
-        mCallbackManager = CallbackManager.Factory.create();
-        loginButton_fb.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+        custom_fb_btn = findViewById(R.id.custom_fb_btn);
+        custom_fb_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LoginManager.getInstance().logInWithReadPermissions(LoginPage.this, Arrays.asList("email", "public_profile"));
+                LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
                         Log.d(TAG, "onSuccess"+loginResult);
@@ -93,6 +96,9 @@ public class LoginPage extends AppCompatActivity {
                         Log.d(TAG, "onError: "+error);
                     }
                 });
+            }
+        });
+        mCallbackManager = CallbackManager.Factory.create();
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -121,6 +127,13 @@ public class LoginPage extends AppCompatActivity {
             public void onClick(View view) {
                 signIn();
                 signInOption = 1;
+            }
+        });
+        TextView click = findViewById(R.id.click);
+        click.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(LoginPage.this, "Haan click ho rha hai bc", Toast.LENGTH_SHORT).show();
             }
         });
     }
