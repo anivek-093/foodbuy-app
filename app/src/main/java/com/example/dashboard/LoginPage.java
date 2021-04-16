@@ -146,6 +146,7 @@ public class LoginPage extends AppCompatActivity {
 //                Toast.makeText(this, "bundle sent == null", Toast.LENGTH_SHORT).show();
 //            }
 //            Toast.makeText(this, bundle.getString("name")+"\n"+bundle.getString("mail"), Toast.LENGTH_SHORT).show();
+//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }
         else{
@@ -200,6 +201,7 @@ public class LoginPage extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(LoginPage.this, "Login Success", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginPage.this, Registration.class);
+//                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
                         } else {
                             Toast.makeText(LoginPage.this, "Task unsuccessful", Toast.LENGTH_SHORT).show();
