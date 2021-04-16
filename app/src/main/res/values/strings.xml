@@ -4,7 +4,11 @@
     <string name="login_now_with_google">Login now with google</string>
     <string name="fb_login_protocol_scheme">fb502988057751522</string>
     <string name="facebook_app_id">502988057751522</string>
-
+    <string-array name="user_array">
+        <item>Consumer</item>
+        <item>Retailer</item>
+        <item>Wholesaler</item>
+    </string-array>
     <string name="Nav_drawer_open">Open navigation drawer</string>
     <string name="Nav_drawer_close">Close navigation drawer</string>
     <!-- TODO: Remove or change this placeholder text -->

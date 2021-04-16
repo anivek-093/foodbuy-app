@@ -5,7 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,9 +17,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Registration extends AppCompatActivity {
+public class Registration extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     TextView name_text, mail_text;
     Button logout_btn;
+    public String visible;
+    public EditText visibility;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,20 +53,43 @@ public class Registration extends AppCompatActivity {
         }else{
             GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
             if(signInAccount!=null){
-                name_text.setText("Name: " + signInAccount.getDisplayName());
-                mail_text.setText("Email: " + signInAccount.getEmail());
+                name_text.setText(signInAccount.getDisplayName());
+                mail_text.setText(signInAccount.getEmail());
             } else{
                 name_text.setText("2");
                 mail_text.setText("2");
             }
         }
+
+        Spinner spinner = findViewById(R.id.user_menu);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.user_array, android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
         logout_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            FirebaseAuth.getInstance().signOut();
-            Intent intent = new Intent(getApplicationContext(), LoginPage.class);
-            startActivity(intent);
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getApplicationContext(), LoginPage.class);
+                startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        String selection = adapterView.getItemAtPosition(i).toString();    //"Selection" stores spinner value
+        Toast.makeText(this, selection, Toast.LENGTH_SHORT).show();
+        visibility=findViewById(R.id.storeName);
+        if(selection.equals("Consumer")){
+            visibility.setVisibility(View.GONE);
+        }else{
+            visibility.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }
