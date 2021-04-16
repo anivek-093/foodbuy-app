@@ -45,7 +45,6 @@
             android:theme="@style/Theme.Nav_Activity.NoActionBar"
             >
 
-
         </activity>
         <activity android:name=".ProductsActivity" />
     </application>
