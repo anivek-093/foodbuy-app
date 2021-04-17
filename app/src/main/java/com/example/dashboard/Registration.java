@@ -108,7 +108,7 @@ public class Registration extends AppCompatActivity implements AdapterView.OnIte
     }
 
     private void validateAndRegisterUser() {
-        User user = new User(mail_text.getText().toString(), userName.getText().toString(), userType, storeName.getText().toString(), phone.getText().toString(), street.getText().toString(), pincode.getText().toString(), city.getText().toString(), state.getText().toString());
+        User user = new User(mail_text.getText().toString(), userName.getText().toString(), userType.toLowerCase(), storeName.getText().toString(), phone.getText().toString(), street.getText().toString(), pincode.getText().toString(), city.getText().toString(), state.getText().toString());
         postNewUser(user);
     }
 
