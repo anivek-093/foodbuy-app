@@ -176,8 +176,8 @@
         android:hint="City"
         android:inputType="textPersonName"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName6"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName6" />
+        app:layout_constraintStart_toStartOf="@+id/pincode"
+        app:layout_constraintTop_toBottomOf="@+id/pincode" />
 
     <EditText
         android:id="@+id/state"
