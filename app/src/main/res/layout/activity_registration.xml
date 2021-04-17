@@ -192,7 +192,7 @@
         app:layout_constraintTop_toBottomOf="@+id/street" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName6"
+        android:id="@+id/pincode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -204,7 +204,7 @@
         app:layout_constraintTop_toBottomOf="@+id/state" />
 
     <EditText
-        android:id="@+id/phone_number"
+        android:id="@+id/phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -212,15 +212,6 @@
         app:layout_constraintEnd_toEndOf="@+id/city"
         app:layout_constraintStart_toStartOf="@+id/city"
         app:layout_constraintTop_toBottomOf="@+id/city" />
-    <!--        android:id="@+id/phone"-->
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Phone Number"
-        android:inputType="textPersonName"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName6"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName6" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
