@@ -41,9 +41,6 @@
             </intent-filter>
         </activity>
         <!--        Facebook login activity end   -->
-        <activity android:name=".cart3" />
-        <activity android:name=".Cart2" />
-        <activity android:name=".Cart" />
         <activity android:name=".MainActivity"
             android:theme="@style/Theme.Nav_Activity.NoActionBar"
             >
