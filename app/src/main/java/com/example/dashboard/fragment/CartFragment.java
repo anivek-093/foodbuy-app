@@ -55,13 +55,14 @@ public class CartFragment extends Fragment {
         productDatabase.productDao().getProductList().observe(getViewLifecycleOwner(), new Observer<List<Product>>() {
             @Override
             public void onChanged(List<Product> productList) {
-                if(productList.size() == 0) {
-                    cartTotalCostLL.setVisibility(View.GONE);
+                if(productList != null) {
+                    if (productList.size() == 0) {
+                        cartTotalCostLL.setVisibility(View.GONE);
+                    } else {
+                        cartTotalCostLL.setVisibility(View.VISIBLE);
+                    }
+                    generateProductsList(view, productList);
                 }
-                else{
-                    cartTotalCostLL.setVisibility(View.VISIBLE);
-                }
-                generateProductsList(view, productList);
             }
         });
         productDatabase.productDao().getTotalCost().observe(getViewLifecycleOwner(), new Observer<Float>() {

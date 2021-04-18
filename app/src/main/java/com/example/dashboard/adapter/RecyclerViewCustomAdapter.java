@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dashboard.R;
+import com.example.dashboard.data.CartTransactions;
 import com.example.dashboard.data.ProductDatabase;
 import com.example.dashboard.executer.AppExecutors;
 import com.example.dashboard.model.Product;
@@ -25,12 +26,12 @@ public class RecyclerViewCustomAdapter extends RecyclerView.Adapter<RecyclerView
     private Context context;
     private List<Product> productList;
 
-    private ProductDatabase productDatabase;
+    private CartTransactions cartTransactions;
 
     public RecyclerViewCustomAdapter(Context context, List<Product> productList) {
         this.context = context;
         this.productList = productList;
-        productDatabase = ProductDatabase.getInstance(context);
+        cartTransactions = new CartTransactions(this.context);
     }
 
     class CustomViewHolder extends RecyclerView.ViewHolder {
@@ -100,13 +101,9 @@ public class RecyclerViewCustomAdapter extends RecyclerView.Adapter<RecyclerView
     }
 
     private void addProductToCart(Product product) {
+        //TODO Implement adding desired quantity of product to cart
         product.addedQuantity = 1.0f;
 
-        AppExecutors.getInstance().diskIO().execute(new Runnable() {
-            @Override
-            public void run() {
-                productDatabase.productDao().insertProduct(product);
-            }
-        });
+        cartTransactions.addProductToCart(product);
     }
 }

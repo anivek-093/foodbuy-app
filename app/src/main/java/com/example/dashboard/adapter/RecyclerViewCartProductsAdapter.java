@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dashboard.R;
+import com.example.dashboard.data.CartTransactions;
 import com.example.dashboard.model.Product;
 import com.example.dashboard.utility.MathUtility;
 import com.jakewharton.picasso.OkHttp3Downloader;
@@ -22,9 +24,12 @@ public class RecyclerViewCartProductsAdapter extends RecyclerView.Adapter<Recycl
     private Context context;
     private List<Product> productList;
 
+    private CartTransactions cartTransactions;
+
     public RecyclerViewCartProductsAdapter(Context context, List<Product> productList) {
         this.context = context;
         this.productList = productList;
+        cartTransactions = new CartTransactions(this.context);
     }
 
     class CartProductsCustomViewHolder extends RecyclerView.ViewHolder {
@@ -35,6 +40,7 @@ public class RecyclerViewCartProductsAdapter extends RecyclerView.Adapter<Recycl
         TextView productSellerText;
         TextView productCost;
         ImageView productImage;
+        ImageButton deleteFromCartButton;
 
         CartProductsCustomViewHolder(View itemView) {
             super(itemView);
@@ -46,6 +52,7 @@ public class RecyclerViewCartProductsAdapter extends RecyclerView.Adapter<Recycl
             productSellerText = mView.findViewById(R.id.cart_product_seller_text);
             productCost = mView.findViewById(R.id.cart_product_cost);
             productImage = mView.findViewById(R.id.cart_product_image);
+            deleteFromCartButton = mView.findViewById(R.id.cart_product_delete_from_cart_button);
         }
     }
 
@@ -68,8 +75,17 @@ public class RecyclerViewCartProductsAdapter extends RecyclerView.Adapter<Recycl
         holder.productCost.append(cost);
 
         if(productList.get(position).seller != null) {
-            holder.productSellerText.append(productList.get(position).seller.storeName);
+            if(productList.get(position).seller.storeName != null) {
+                holder.productSellerText.append(productList.get(position).seller.storeName);
+            }
         }
+
+        holder.deleteFromCartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteProductFromCart(productList.get(position));
+            }
+        });
 
         Picasso.Builder builder = new Picasso.Builder(context);
         builder.downloader(new OkHttp3Downloader(context));
@@ -82,5 +98,9 @@ public class RecyclerViewCartProductsAdapter extends RecyclerView.Adapter<Recycl
     @Override
     public int getItemCount() {
         return productList.size();
+    }
+
+    private void deleteProductFromCart(Product product) {
+        cartTransactions.deleteProductFromCart(product);
     }
 }
