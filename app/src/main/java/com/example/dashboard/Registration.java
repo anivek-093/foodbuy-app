@@ -1,16 +1,12 @@
 package com.example.dashboard;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,17 +17,18 @@ import com.example.dashboard.network.DataService;
 import com.example.dashboard.network.RetrofitClientInstance;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.firebase.auth.FirebaseAuth;
 
+import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Registration extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
-    private TextView name_text, mail_text, doneButton;
+public class Registration extends AppCompatActivity{
+    private TextView name_text, mail_text, doneButton, storename_head;
     private EditText storeName, userName, street, city, state, pincode, phone;
     private String userType = "Customer";
-
+    private RadioGroup radioGroup;
+    private RadioButton radioButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +43,9 @@ public class Registration extends AppCompatActivity implements AdapterView.OnIte
         pincode = findViewById(R.id.pincode);
         phone = findViewById(R.id.phone);
         doneButton = findViewById(R.id.done_text_activity_registration);
+        storename_head = findViewById(R.id.storeName_head);
+        radioGroup = findViewById(R.id.userGroup);
+        storeName = findViewById(R.id.storeName);
 
         int loginOption = LoginPage.signInOption;
         if(loginOption == 2) {
@@ -76,11 +76,6 @@ public class Registration extends AppCompatActivity implements AdapterView.OnIte
             }
         }
 
-        Spinner spinner = findViewById(R.id.user_menu);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.user_array, android.R.layout.simple_spinner_dropdown_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
 
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,21 +85,19 @@ public class Registration extends AppCompatActivity implements AdapterView.OnIte
         });
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        userType = adapterView.getItemAtPosition(i).toString();    //"Selection" stores spinner value
-        Toast.makeText(this, userType, Toast.LENGTH_SHORT).show();
-        storeName=findViewById(R.id.storeName);
-        if(userType.equals("Customer")){
+
+    public void checkButton(View v) {
+        int radioId = radioGroup.getCheckedRadioButtonId();
+        radioButton = findViewById(radioId);
+        Toast.makeText(this, radioButton.getText(), Toast.LENGTH_SHORT).show();
+        if(radioButton.getText().equals("Consumer"))
+        {
             storeName.setVisibility(View.GONE);
+            storename_head.setVisibility(View.GONE);
         }else{
             storeName.setVisibility(View.VISIBLE);
+            storename_head.setVisibility(View.VISIBLE);
         }
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
     }
 
     private void validateAndRegisterUser() {

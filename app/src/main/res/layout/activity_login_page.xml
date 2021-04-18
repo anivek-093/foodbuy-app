@@ -11,13 +11,18 @@
 
     <EditText
         android:id="@+id/username_entry"
-        android:layout_width="327dp"
-        android:layout_height="44dp"
+        android:layout_width="348dp"
+        android:layout_height="40dp"
+        android:background="@drawable/button_violet"
         android:ems="10"
         android:fontFamily="@font/exo"
+        android:foregroundTint="@color/colorPrimaryDark"
         android:inputType="textPersonName"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/Username"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Username" />
 
     <TextView
@@ -38,25 +43,27 @@
         android:id="@+id/textView4"
         android:layout_width="360dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="380dp"
+        android:layout_marginBottom="416dp"
         android:fontFamily="@font/exo_medium"
         android:text="Log in with one of the following options:"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/username_entry" />
 
     <TextView
-        android:id="@+id/click"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/contact_us_link"
+        android:layout_width="74dp"
+        android:layout_height="19dp"
         android:layout_marginStart="4dp"
         android:clickable="true"
         android:fontFamily="@font/exo_medium"
         android:text="Contact Us!"
         android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/custom_fb_btn"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/havingproblems"
         app:layout_constraintTop_toTopOf="@+id/havingproblems" />
 
@@ -64,12 +71,13 @@
         android:id="@+id/havingproblems"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/exo"
         android:text="Having problems?"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.21"
+        app:layout_constraintStart_toStartOf="@+id/custom_fb_btn"
         app:layout_constraintTop_toBottomOf="@+id/custom_fb_btn" />
 
     <TextView
@@ -79,7 +87,7 @@
         android:layout_marginTop="24dp"
         android:fontFamily="@font/exo_medium"
         android:text="Enter email:"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/violet"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -98,8 +106,8 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/custom_fb_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="47dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/button_blue"
         android:drawableStart="@drawable/com_facebook_favicon_blue"
@@ -117,12 +125,13 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/login_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="47dp"
         android:layout_marginTop="80dp"
         android:background="@drawable/button_magenta"
         android:drawableLeft="@drawable/googleg_standard_color_18"
         android:drawablePadding="8dp"
+        android:elevation="4dp"
         android:fontFamily="@font/exo_semibold"
         android:paddingLeft="12dp"
         android:paddingRight="16dp"
@@ -138,9 +147,9 @@
         android:id="@+id/imageView4"
         android:layout_width="147dp"
         android:layout_height="122dp"
-        android:layout_marginTop="144dp"
+        android:layout_marginTop="132dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
