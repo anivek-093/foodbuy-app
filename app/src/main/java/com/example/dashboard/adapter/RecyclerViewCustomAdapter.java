@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dashboard.R;
+import com.example.dashboard.data.ProductDatabase;
+import com.example.dashboard.executer.AppExecutors;
 import com.example.dashboard.model.Product;
 import com.example.dashboard.utility.MathUtility;
 import com.jakewharton.picasso.OkHttp3Downloader;
@@ -22,9 +25,12 @@ public class RecyclerViewCustomAdapter extends RecyclerView.Adapter<RecyclerView
     private Context context;
     private List<Product> productList;
 
+    private ProductDatabase productDatabase;
+
     public RecyclerViewCustomAdapter(Context context, List<Product> productList) {
         this.context = context;
         this.productList = productList;
+        productDatabase = ProductDatabase.getInstance(context);
     }
 
     class CustomViewHolder extends RecyclerView.ViewHolder {
@@ -35,6 +41,7 @@ public class RecyclerViewCustomAdapter extends RecyclerView.Adapter<RecyclerView
         TextView productSellerText;
         TextView productPrice;
         ImageView productImage;
+        ImageButton addToCartButton;
 
         CustomViewHolder(View itemView) {
             super(itemView);
@@ -46,6 +53,7 @@ public class RecyclerViewCustomAdapter extends RecyclerView.Adapter<RecyclerView
             productSellerText = mView.findViewById(R.id.product_seller_text);
             productPrice = mView.findViewById(R.id.product_price);
             productImage = mView.findViewById(R.id.product_image);
+            addToCartButton = mView.findViewById(R.id.product_add_to_cart_button);
         }
 
     }
@@ -71,6 +79,13 @@ public class RecyclerViewCustomAdapter extends RecyclerView.Adapter<RecyclerView
             holder.productSellerText.append(productList.get(position).seller.name);
         }
 
+        holder.addToCartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addProductToCart(productList.get(position));
+            }
+        });
+
         Picasso.Builder builder = new Picasso.Builder(context);
         builder.downloader(new OkHttp3Downloader(context));
         builder.build().load("https://homepages.cae.wisc.edu/~ece533/images/fruits.png")
@@ -82,5 +97,16 @@ public class RecyclerViewCustomAdapter extends RecyclerView.Adapter<RecyclerView
     @Override
     public int getItemCount() {
         return productList.size();
+    }
+
+    private void addProductToCart(Product product) {
+        product.addedQuantity = 1.0f;
+
+        AppExecutors.getInstance().diskIO().execute(new Runnable() {
+            @Override
+            public void run() {
+                productDatabase.productDao().insertProduct(product);
+            }
+        });
     }
 }

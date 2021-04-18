@@ -60,7 +60,7 @@
 
         <TextView
             android:id="@+id/fragment_addproduct_name_text"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
             android:text="Name"
@@ -89,7 +89,7 @@
 
         <TextView
             android:id="@+id/fragment_addproduct_price_text"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
             android:text="Price"
@@ -119,7 +119,7 @@
 
         <TextView
             android:id="@+id/fragment_addproduct_quantity_text"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
             android:text="Quantity"
@@ -149,7 +149,7 @@
 
         <TextView
             android:id="@+id/fragment_addproduct_unit_text"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
             android:text="Unit"
@@ -192,7 +192,7 @@
 
         <TextView
             android:id="@+id/fragment_addproduct_type_text"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
             android:text="Type"
@@ -223,7 +223,7 @@
 
         <TextView
             android:id="@+id/fragment_addproduct_subtype_text"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
             android:text="Subtype"
@@ -254,7 +254,7 @@
 
         <TextView
             android:id="@+id/fragment_addproduct_description_text_text"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
             android:text="Description"
@@ -285,7 +285,7 @@
 
         <TextView
             android:id="@+id/fragment_addproduct_image_text"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
             android:text="Image link"
