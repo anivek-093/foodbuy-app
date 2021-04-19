@@ -105,7 +105,7 @@ public class Registration extends AppCompatActivity{
     }
 
     private void validateAndRegisterUser() {
-        User user = new User(mail_text.getText().toString(), userName.getText().toString(), userType.toLowerCase(), storeName.getText().toString(), phone.getText().toString(), street.getText().toString(), pincode.getText().toString(), city.getText().toString(), state.getText().toString());
+        User user = new User(mail_text.getText().toString(), userName.getText().toString(), userType.toLowerCase(), storeName.getText().toString(), phone.getText().toString(), "streetName", "1234", "cityName", "stateName");
         postNewUser(user);
     }
 
