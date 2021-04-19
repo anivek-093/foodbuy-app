@@ -1,19 +1,23 @@
 package com.example.dashboard.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.dashboard.ProductActivity;
 import com.example.dashboard.R;
 import com.example.dashboard.data.CartTransactions;
 import com.example.dashboard.data.ProductDatabase;
+import com.example.dashboard.data.SharedProductData;
 import com.example.dashboard.executer.AppExecutors;
 import com.example.dashboard.model.Product;
 import com.example.dashboard.utility.MathUtility;
@@ -28,10 +32,13 @@ public class RecyclerViewCustomAdapter extends RecyclerView.Adapter<RecyclerView
 
     private CartTransactions cartTransactions;
 
+    private SharedProductData sharedProduct;
+
     public RecyclerViewCustomAdapter(Context context, List<Product> productList) {
         this.context = context;
         this.productList = productList;
         cartTransactions = new CartTransactions(this.context);
+        sharedProduct = SharedProductData.getInstance();
     }
 
     class CustomViewHolder extends RecyclerView.ViewHolder {
@@ -84,6 +91,17 @@ public class RecyclerViewCustomAdapter extends RecyclerView.Adapter<RecyclerView
             @Override
             public void onClick(View v) {
                 addProductToCart(productList.get(position));
+            }
+        });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sharedProduct.saveProduct(productList.get(position));
+                Toast.makeText(context, sharedProduct.getProduct().name + " was clicked", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(context, ProductActivity.class);
+                context.startActivity(intent);
             }
         });
 

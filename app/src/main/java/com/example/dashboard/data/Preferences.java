@@ -30,7 +30,7 @@ public class Preferences {
     //pass applicationContext here because this is a singleton class
     public static Preferences getPreferences(Context context) {
         if(preferences == null) {
-            preferences = new Preferences(context);
+            preferences = new Preferences(context.getApplicationContext());
         }
         return preferences;
     }

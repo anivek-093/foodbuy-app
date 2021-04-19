@@ -1,6 +1,7 @@
 package com.example.dashboard.data;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import com.example.dashboard.executer.AppExecutors;
 import com.example.dashboard.model.Product;
@@ -19,6 +20,7 @@ public class CartTransactions {
             @Override
             public void run() {
                 productDatabase.productDao().insertProduct(product);
+                Toast.makeText(context, "Added to cart", Toast.LENGTH_SHORT).show();
             }
         });
     }

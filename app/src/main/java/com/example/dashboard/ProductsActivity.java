@@ -55,7 +55,7 @@ public class ProductsActivity extends AppCompatActivity {
                     Log.d("ProductsActivity.java", "onResponse: " + response.body().message);
                 }
                 else {
-                    generateProductsList(response.body().productList);
+
                 }
             }
 
@@ -68,13 +68,13 @@ public class ProductsActivity extends AppCompatActivity {
         });
     }
 
-    private void generateProductsList(List<Product> productList) {
-        recyclerView = findViewById(R.id.products_recycler_view);
-
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ProductsActivity.this);
-        recyclerView.setLayoutManager(layoutManager);
-
-        recyclerViewCustomAdapter = new RecyclerViewCustomAdapter(this, productList);
-        recyclerView.setAdapter(recyclerViewCustomAdapter);
-    }
+//    private void generateProductsList(List<Product> productList) {
+//        recyclerView = findViewById(R.id.products_recycler_view);
+//
+//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ProductsActivity.this);
+//        recyclerView.setLayoutManager(layoutManager);
+//
+//        recyclerViewCustomAdapter = new RecyclerViewCustomAdapter(this, productList);
+//        recyclerView.setAdapter(recyclerViewCustomAdapter);
+//    }
 }

@@ -53,6 +53,8 @@
             android:theme="@style/Theme.Nav_Activity.NoActionBar"/>
         <activity android:name=".AddProductActivity"
             android:theme="@style/Theme.Nav_Activity.NoActionBar"/>
+        <activity android:name=".ProductActivity"
+            android:theme="@style/Theme.Nav_Activity.NoActionBar"/>
     </application>
 
 

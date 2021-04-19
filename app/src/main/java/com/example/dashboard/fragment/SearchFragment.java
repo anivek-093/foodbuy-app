@@ -14,12 +14,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dashboard.R;
 import com.example.dashboard.adapter.RecyclerViewCustomAdapter;
 import com.example.dashboard.data.Preferences;
+import com.example.dashboard.data.SharedProductData;
 import com.example.dashboard.model.Product;
 import com.example.dashboard.model.ProductsResponse;
 import com.example.dashboard.model.User;
@@ -110,7 +112,7 @@ public class SearchFragment extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 
-        recyclerViewCustomAdapter = new RecyclerViewCustomAdapter(getContext(), productList);
+        recyclerViewCustomAdapter = new RecyclerViewCustomAdapter(getActivity(), productList);
         recyclerView.setAdapter(recyclerViewCustomAdapter);
     }
 }

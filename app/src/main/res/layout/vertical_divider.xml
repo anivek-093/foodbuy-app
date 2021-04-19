@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_height="0dp"
+<LinearLayout
+    android:id="@+id/divider"
+    android:layout_height="0dp"
     android:layout_width="2dp"
     android:background="#31000000"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal">
 
 </LinearLayout>
