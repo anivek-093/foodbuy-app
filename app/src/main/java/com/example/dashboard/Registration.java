@@ -1,5 +1,6 @@
 package com.example.dashboard;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +30,7 @@ public class Registration extends AppCompatActivity{
     private String userType = "Customer";
     private RadioGroup radioGroup;
     private RadioButton radioButton;
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +48,9 @@ public class Registration extends AppCompatActivity{
         storename_head = findViewById(R.id.storeName_head);
         radioGroup = findViewById(R.id.userGroup);
         storeName = findViewById(R.id.storeName);
+
+        progressDialog = new ProgressDialog(Registration.this);
+        progressDialog.setMessage("Registering...");
 
         int loginOption = LoginPage.signInOption;
         if(loginOption == 2) {
@@ -95,6 +100,7 @@ public class Registration extends AppCompatActivity{
             storeName.setVisibility(View.GONE);
             storename_head.setVisibility(View.GONE);
         }else{
+            userType = radioButton.getText().toString();
             storeName.setVisibility(View.VISIBLE);
             storename_head.setVisibility(View.VISIBLE);
         }
@@ -106,6 +112,8 @@ public class Registration extends AppCompatActivity{
     }
 
     private void postNewUser(User user) {
+        progressDialog.show();
+
         DataService service = RetrofitClientInstance.getRetrofitInstance()
                 .create(DataService.class);
 
@@ -114,14 +122,16 @@ public class Registration extends AppCompatActivity{
         call.enqueue(new Callback<UserResponseObject>() {
             @Override
             public void onResponse(Call<UserResponseObject> call, Response<UserResponseObject> response) {
-
+                progressDialog.dismiss();
                 if(response.body().error){
                     Log.e("Registration.java", "onResponse: " + response.body().message);
                     Toast.makeText(Registration.this, "Error adding user", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     Preferences preferences = Preferences.getPreferences(getApplicationContext());
-                    preferences.saveUser(user);
+                    preferences.saveUser(response.body().user);
+
+                    Toast.makeText(Registration.this, "Successfully Registered.", Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(Registration.this, MainActivity.class);
                     startActivity(intent);
@@ -130,6 +140,7 @@ public class Registration extends AppCompatActivity{
 
             @Override
             public void onFailure(Call<UserResponseObject> call, Throwable t) {
+                progressDialog.dismiss();
                 Log.e("Registration.java", "onFailure: " + t.getMessage());
                 Toast.makeText(Registration.this, "Error adding user", Toast.LENGTH_SHORT).show();
             }

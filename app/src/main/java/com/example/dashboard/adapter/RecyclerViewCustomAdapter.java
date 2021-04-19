@@ -104,6 +104,6 @@ public class RecyclerViewCustomAdapter extends RecyclerView.Adapter<RecyclerView
         //TODO Implement adding desired quantity of product to cart
         product.addedQuantity = 1.0f;
 
-        cartTransactions.addProductToCart(product);
+        cartTransactions.updateOrInsertInCart(product);
     }
 }

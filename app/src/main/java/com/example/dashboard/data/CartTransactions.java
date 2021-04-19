@@ -49,4 +49,20 @@ public class CartTransactions {
             }
         });
     }
+
+    public void updateOrInsertInCart(Product product) {
+        AppExecutors.getInstance().diskIO().execute(new Runnable() {
+            @Override
+            public void run() {
+                Product existingProduct = productDatabase.productDao().getProductWithMongoId(product._id);
+                if(existingProduct == null) {
+                    addProductToCart(product);
+                }
+                else {
+                    existingProduct.addedQuantity += product.addedQuantity;
+                    updateProductInCart(existingProduct);
+                }
+            }
+        });
+    }
 }

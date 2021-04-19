@@ -84,8 +84,14 @@ public class SearchFragment extends Fragment {
                     Toast.makeText(getContext(), "Error finding products.", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Log.e("SearchFragment.java", Integer.toString(response.body().productList.size()));
-                    generateProductList(response.body().productList);
+                    if(response.body().productList != null) {
+                        Log.e("SearchFragment.java", Integer.toString(response.body().productList.size()));
+                        generateProductList(response.body().productList);
+                    }
+                    else {
+                        Log.e("SearchFragment.java", "No products found.");
+                        Toast.makeText(getContext(), "We have no such products.", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 

@@ -18,6 +18,9 @@ public interface ProductDao {
     @Query("Select * from product")
     LiveData<List<Product>> getProductList();
 
+    @Query("Select * from product")
+    List<Product> getProductListAsList();
+
     @Query("Select total(price*addedQuantity) from product")
     LiveData<Float> getTotalCost();
 
@@ -32,4 +35,7 @@ public interface ProductDao {
     
     @Query("Delete from product")
     void deleteAllProducts();
+
+    @Query("Select * from product where _id = :mongoId")
+    Product getProductWithMongoId(String mongoId);
 }

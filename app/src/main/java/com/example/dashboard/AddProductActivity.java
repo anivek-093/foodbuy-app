@@ -83,7 +83,7 @@ public class AddProductActivity extends AppCompatActivity {
                 Float.parseFloat(productPrice.getText().toString()),
                 Float.parseFloat(productQuantity.getText().toString()),
                 productUnit.getText().toString(),
-                preferences.getCurrentUser().userType,
+                preferences.getCurrentUser().userType.toLowerCase(),
                 new ProductDescription(productType.getText().toString(), productSubtype.getText().toString(), productDescriptionText.getText().toString()),
                 preferences.getCurrentUser()
         );

@@ -5,6 +5,8 @@ import com.example.dashboard.model.ProductDescription;
 import com.example.dashboard.model.ProductsResponse;
 import com.example.dashboard.model.User;
 import com.example.dashboard.model.UserResponseObject;
+import com.example.dashboard.model.order.OrderRequest;
+import com.example.dashboard.model.order.OrderResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -41,5 +43,11 @@ public interface DataService {
     Call<ProductsResponse> getProductByName(
             @Query("productName") String productName,
             @Query("userType") String userType
+    );
+
+    @Headers("Content-Type: application/json")
+    @POST("/placeOrder")
+    Call<OrderResponse> placeOrder(
+            @Body OrderRequest orderRequest
     );
 }
