@@ -66,7 +66,7 @@
             android:layout_width="85dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
-            android:fontFamily="@font/exo_medium"
+            android:fontFamily="@font/exo_semibold"
             android:text="Name"
             android:textColor="@color/purple_200"
             android:textSize="16sp" />
@@ -101,7 +101,7 @@
             android:layout_width="85dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
-            android:fontFamily="@font/exo_medium"
+            android:fontFamily="@font/exo_semibold"
             android:text="Price"
             android:textColor="@color/purple_200"
             android:textSize="16sp" />
@@ -137,7 +137,7 @@
             android:layout_width="85dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
-            android:fontFamily="@font/exo_medium"
+            android:fontFamily="@font/exo_semibold"
             android:text="Quantity"
             android:textColor="@color/purple_200"
             android:textSize="16sp" />
@@ -173,7 +173,7 @@
             android:layout_width="85dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
-            android:fontFamily="@font/exo_medium"
+            android:fontFamily="@font/exo_semibold"
             android:text="Unit"
             android:textColor="@color/purple_200"
             android:textSize="16sp" />
@@ -199,7 +199,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/exo_semibold"
+        android:fontFamily="@font/exo_bold"
         android:text="+ Add Product Description"
         android:textColor="@color/purple_200"
         android:textSize="18sp"
@@ -224,7 +224,7 @@
             android:layout_width="85dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
-            android:fontFamily="@font/exo_medium"
+            android:fontFamily="@font/exo_semibold"
             android:text="Type"
             android:textColor="@color/purple_200"
             android:textSize="16sp" />
@@ -261,7 +261,7 @@
             android:layout_width="85dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
-            android:fontFamily="@font/exo_medium"
+            android:fontFamily="@font/exo_semibold"
             android:text="Subtype"
             android:textColor="@color/purple_200"
             android:textSize="16sp" />
@@ -298,7 +298,7 @@
             android:layout_width="85dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
-            android:fontFamily="@font/exo_medium"
+            android:fontFamily="@font/exo_semibold"
             android:text="Description"
             android:textColor="@color/purple_200"
             android:textSize="16sp" />
@@ -335,7 +335,7 @@
             android:layout_width="85dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
-            android:fontFamily="@font/exo_medium"
+            android:fontFamily="@font/exo_semibold"
             android:text="Image link"
             android:textColor="@color/purple_200"
             android:textSize="16sp" />

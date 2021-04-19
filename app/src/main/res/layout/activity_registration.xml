@@ -6,53 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".Registration">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="8dp">
-
-            <TextView
-                android:id="@+id/title_text_activity_registration"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Register"
-                android:textColor="@color/white"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/done_text_activity_registration"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Done"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="HardcodedText" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.appcompat.widget.Toolbar>
-
     <EditText
         android:id="@+id/username"
-        android:layout_width="wrap_content"
+        android:layout_width="278dp"
         android:layout_height="40dp"
         android:background="@drawable/field_selector"
         android:ems="10"
@@ -61,63 +17,14 @@
         android:inputType="textPersonName"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
-        android:textColor="@android:color/background_dark"
-        android:textSize="14sp"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <TextView
-        android:id="@+id/nametext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="80dp"
-        android:fontFamily="@font/exo_medium"
-        android:text="TextView"
-        android:textColor="@color/black"
-        android:textSize="12dp"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/mailtext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/exo_medium"
-        android:text="TextView"
-        android:textColor="@color/black"
-        android:textSize="12dp"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/nametext" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:fontFamily="@font/exo_medium"
-        android:text="Name:"
-        android:textSize="12dp"
-        android:textColor="@color/colorPrimary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/nametext" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/exo_medium"
-        android:text="Email:"
-        android:textSize="12dp"
-        android:textColor="@color/colorPrimary"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="@+id/mailtext" />
-
     <EditText
         android:id="@+id/password"
-        android:layout_width="wrap_content"
+        android:layout_width="278dp"
         android:layout_height="40dp"
         android:background="@drawable/field_selector"
         android:ems="10"
@@ -126,41 +33,14 @@
         android:inputType="none|textPassword"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
-        android:textColor="@android:color/background_dark"
-        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/username"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
-    <TextView
-        android:id="@+id/userType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:fontFamily="@font/exo_medium"
-        android:text="Type of user:"
-        android:textColor="@color/violet"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/password"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
-
-
-    <!--        app:layout_constraintStart_toEndOf="@+id/userType"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />-->
-
-<!--    <Spinner-->
-<!--        android:id="@+id/user_menu"-->
-<!--        android:layout_width="118dp"-->
-<!--        android:layout_height="17dp"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:backgroundTint="#6F6C6C"-->
-<!--        android:backgroundTintMode="add"-->
-<!--        android:spinnerMode="dropdown"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/userType"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/password" />-->
-
     <EditText
         android:id="@+id/storeName"
-        android:layout_width="wrap_content"
+        android:layout_width="278dp"
         android:layout_height="40dp"
         android:background="@drawable/field_selector"
         android:ems="10"
@@ -175,69 +55,8 @@
         app:layout_constraintTop_toBottomOf="@+id/storeName_head" />
 
     <EditText
-        android:id="@+id/street"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:background="@drawable/field_selector"
-        android:ems="10"
-        android:fontFamily="@font/exo_medium"
-        android:foregroundTint="@color/colorPrimaryDark"
-        android:inputType="textPersonName"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/storeName"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-    <EditText
-        android:id="@+id/city"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:background="@drawable/field_selector"
-        android:ems="10"
-        android:fontFamily="@font/exo_medium"
-        android:foregroundTint="@color/colorPrimaryDark"
-        android:inputType="textPersonName"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/pincode"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-    <EditText
         android:id="@+id/phone"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:background="@drawable/field_selector"
-        android:ems="10"
-        android:fontFamily="@font/exo_medium"
-        android:foregroundTint="@color/colorPrimaryDark"
-        android:inputType="textPersonName"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@+id/city"
-        app:layout_constraintStart_toStartOf="@+id/city"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-    <EditText
-        android:id="@+id/state"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:background="@drawable/field_selector"
-        android:ems="10"
-        android:fontFamily="@font/exo_medium"
-        android:foregroundTint="@color/colorPrimaryDark"
-        android:inputType="textPersonName"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/street"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-    <EditText
-        android:id="@+id/pincode"
-        android:layout_width="wrap_content"
+        android:layout_width="278dp"
         android:layout_height="40dp"
         android:background="@drawable/field_selector"
         android:ems="10"
@@ -246,33 +65,157 @@
         android:inputType="number"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/state"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+
+    <!--        app:layout_constraintStart_toEndOf="@+id/userType"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />-->
+
+    <!--    <Spinner-->
+    <!--        android:id="@+id/user_menu"-->
+    <!--        android:layout_width="118dp"-->
+    <!--        android:layout_height="17dp"-->
+    <!--        android:layout_marginTop="16dp"-->
+    <!--        android:backgroundTint="#6F6C6C"-->
+    <!--        android:backgroundTintMode="add"-->
+    <!--        android:spinnerMode="dropdown"-->
+    <!--        app:layout_constraintStart_toEndOf="@+id/userType"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/password" />-->
+
+    <RadioGroup
+        android:id="@+id/userGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userType">>
+
+        <RadioButton
+            android:id="@+id/consumer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@drawable/radio_selector"
+            android:button="@android:color/transparent"
+            android:checked="true"
+            android:fontFamily="@font/exo_medium"
+            android:hapticFeedbackEnabled="true"
+            android:onClick="radioButtonClicked"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="Consumer"
+            android:textColor="@drawable/text_selector"
+            android:textSize="15sp" />
+
+        <RadioButton
+            android:id="@+id/retailer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@drawable/radio_selector"
+            android:button="@android:color/transparent"
+            android:fontFamily="@font/exo_medium"
+            android:hapticFeedbackEnabled="true"
+            android:onClick="radioButtonClicked"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="Retailer"
+            android:textColor="@drawable/text_selector"
+            android:textSize="15sp" />
+
+        <RadioButton
+            android:id="@+id/wholesaler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@drawable/radio_selector"
+            android:button="@android:color/transparent"
+            android:fontFamily="@font/exo_medium"
+            android:hapticFeedbackEnabled="true"
+            android:onClick="radioButtonClicked"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="Wholesaler"
+            android:textColor="@drawable/text_selector"
+            android:textSize="15sp" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/nametext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/exo_medium"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/mailtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/exo_medium"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/nametext" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:fontFamily="@font/exo_medium"
+        android:text="Name:"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/nametext" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/exo_medium"
+        android:text="Email:"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/mailtext" />
+
+    <TextView
+        android:id="@+id/userType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/exo_medium"
+        android:text="I am a: "
+        android:textColor="@color/violet"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/password"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/exo_medium"
         android:text="Username:"
         android:textColor="@color/violet"
-        android:textSize="12sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/exo_medium"
-        android:text="Street:"
-        android:textColor="@color/violet"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/storeName"
-        app:layout_constraintTop_toBottomOf="@+id/storeName" />
 
     <TextView
         android:id="@+id/storeName_head"
@@ -285,121 +228,137 @@
         android:textSize="12sp"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="@+id/userType"
-        app:layout_constraintTop_toBottomOf="@+id/userGroup" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/exo_medium"
-        android:text="State:"
-        android:textColor="@color/violet"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/street"
-        app:layout_constraintTop_toBottomOf="@+id/street" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/exo_medium"
-        android:text="Pincode:"
-        android:textColor="@color/violet"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/state"
-        app:layout_constraintTop_toBottomOf="@+id/state" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/exo_medium"
-        android:text="City:"
-        android:textColor="@color/violet"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/pincode"
-        app:layout_constraintTop_toBottomOf="@+id/pincode" />
+        app:layout_constraintTop_toBottomOf="@+id/userGroup"
+        tools:textSize="16sp" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/exo_medium"
         android:text="Phone Number:"
         android:textColor="@color/violet"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/city"
-        app:layout_constraintTop_toBottomOf="@+id/city" />
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/password"
+        app:layout_constraintTop_toBottomOf="@+id/google_location_btn" />
 
     <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/exo_medium"
         android:text="Password:"
         android:textColor="@color/violet"
-        android:textSize="12sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/username"
         app:layout_constraintTop_toBottomOf="@+id/username" />
 
-    <RadioGroup
-        android:id="@+id/userGroup"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/violet"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/title_text_activity_registration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/exo_bold"
+                android:text="Register"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="@+id/userType"
-        app:layout_constraintTop_toBottomOf="@+id/userType">>
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="68dp" />
 
-        <RadioButton
-            android:id="@+id/consumer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:background="@drawable/radio_selector"
-            android:button="@android:color/transparent"
-            android:checked="true"
-            android:fontFamily="@font/exo_semibold"
-            android:onClick="checkButton"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:text="Consumer"
-            android:textColor="@drawable/text_selector"
-            android:textSize="12sp" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="343dp" />
 
-        <RadioButton
-            android:id="@+id/retailer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:background="@drawable/radio_selector"
-            android:button="@android:color/transparent"
-            android:fontFamily="@font/exo_semibold"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:text="Retailer"
-            android:onClick="checkButton"
-            android:textColor="@drawable/text_selector"
-            android:textSize="12sp" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/google_location_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/button_blue"
+        android:drawableStart="@drawable/location_icon"
+        android:drawableLeft="@drawable/location_icon"
+        android:drawablePadding="4dp"
+        android:elevation="10dp"
+        android:fontFamily="@font/exo_bold"
+        android:hapticFeedbackEnabled="false"
+        android:paddingStart="12dp"
+        android:paddingEnd="16dp"
+        android:text="Get my Location"
+        android:textColor="@color/blue"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-        <RadioButton
-            android:id="@+id/wholesaler"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:background="@drawable/radio_selector"
-            android:button="@android:color/transparent"
-            android:fontFamily="@font/exo_semibold"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:text="Wholesaler"
-            android:onClick="checkButton"
-            android:textColor="@drawable/text_selector"
-            android:textSize="12sp" />
-    </RadioGroup>
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/exo_medium"
+        android:text="Enable Google Location:"
+        android:textColor="@color/violet"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textView12"
+        app:layout_constraintTop_toBottomOf="@+id/storeName" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/done_text_activity_registration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/violet"
+        android:clickable="true"
+        android:hapticFeedbackEnabled="true"
+        app:backgroundTint="@color/magenta"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:rippleColor="@color/magenta"
+        app:srcCompat="@drawable/ic_baseline_check_24"
+        app:tint="@color/white"/>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/google_location_btn"
+        app:layout_constraintStart_toEndOf="@+id/google_location_btn"
+        app:layout_constraintTop_toTopOf="@+id/google_location_btn"
+        app:srcCompat="@drawable/not_connected" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

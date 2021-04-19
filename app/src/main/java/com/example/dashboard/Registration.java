@@ -18,6 +18,7 @@ import com.example.dashboard.network.DataService;
 import com.example.dashboard.network.RetrofitClientInstance;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
@@ -25,11 +26,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Registration extends AppCompatActivity{
-    private TextView name_text, mail_text, doneButton, storename_head;
+    private TextView name_text, mail_text, storename_head;
     private EditText storeName, userName, street, city, state, pincode, phone;
     private String userType = "Customer";
     private RadioGroup radioGroup;
     private RadioButton radioButton;
+    private FloatingActionButton doneButton;
     private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +41,6 @@ public class Registration extends AppCompatActivity{
         name_text = findViewById(R.id.nametext);
         mail_text = findViewById(R.id.mailtext);
         userName = findViewById(R.id.username);
-        street = findViewById(R.id.street);
-        city = findViewById(R.id.city);
-        state = findViewById(R.id.state);
-        pincode = findViewById(R.id.pincode);
         phone = findViewById(R.id.phone);
         doneButton = findViewById(R.id.done_text_activity_registration);
         storename_head = findViewById(R.id.storeName_head);
@@ -91,7 +89,7 @@ public class Registration extends AppCompatActivity{
     }
 
 
-    public void checkButton(View v) {
+    public void radioButtonClicked(View v) {
         int radioId = radioGroup.getCheckedRadioButtonId();
         radioButton = findViewById(radioId);
         Toast.makeText(this, radioButton.getText(), Toast.LENGTH_SHORT).show();

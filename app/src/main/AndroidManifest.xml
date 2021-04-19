@@ -13,7 +13,8 @@
         android:theme="@style/Theme.Nav_Activity">
         <activity android:name=".Registration"
             android:theme="@style/Theme.Nav_Activity.NoActionBar"/>
-        <activity android:name=".LoginPage">
+        <activity android:name=".LoginPage"
+            android:theme="@style/Theme.Nav_Activity.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -46,9 +47,7 @@
         </activity>
         <!--        Facebook login activity end   -->
         <activity android:name=".MainActivity"
-            android:theme="@style/Theme.Nav_Activity.NoActionBar"
-            >
-
+            android:theme="@style/Theme.Nav_Activity.NoActionBar"            >
         </activity>
         <activity android:name=".ProductsActivity"
             android:theme="@style/Theme.Nav_Activity.NoActionBar"/>
