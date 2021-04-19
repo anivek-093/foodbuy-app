@@ -20,7 +20,6 @@ public class CartTransactions {
             @Override
             public void run() {
                 productDatabase.productDao().insertProduct(product);
-                Toast.makeText(context, "Added to cart", Toast.LENGTH_SHORT).show();
             }
         });
     }
