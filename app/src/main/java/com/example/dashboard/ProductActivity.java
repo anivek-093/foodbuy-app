@@ -88,7 +88,7 @@ public class ProductActivity extends AppCompatActivity{
             productDescriptionText.setText(product.description.text);
 
         if(product.seller != null) {
-            sellerInfoText.setText("Sold by " + product.seller.storeName + "\nat\n" + product.seller.address.street + ", " + product.seller.address.city + "\nPhone: " + product.seller.phone);
+            sellerInfoText.setText("Sold by " + product.seller.storeName + "\nat\n" + product.seller.address.addressText + "\nPhone: " + product.seller.phone);
         }
 
         Picasso.Builder builder = new Picasso.Builder(ProductActivity.this);

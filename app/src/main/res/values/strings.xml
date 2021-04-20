@@ -3,6 +3,7 @@
     <string name="desc">Image</string>
     <string name="fb_login_protocol_scheme">fb502988057751522</string>
     <string name="facebook_app_id">502988057751522</string>
+    <string name="Google_Maps_Api_Key">AIzaSyDDvlBPIQkAlm5Gf36vvVLHLkd3xUbZPMY</string>
     <string-array name="user_array">
         <item>Customer</item>
         <item>Retailer</item>

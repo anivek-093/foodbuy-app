@@ -1,5 +1,7 @@
 package com.example.dashboard;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,24 +17,38 @@ import com.example.dashboard.data.Preferences;
 import com.example.dashboard.model.User;
 import com.example.dashboard.model.UserResponseObject;
 import com.example.dashboard.network.DataService;
+
 import com.example.dashboard.network.RetrofitClientInstance;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Registration extends AppCompatActivity{
-    private TextView name_text, mail_text, storename_head;
+    private final int REQUEST_CODE_MAP = 1024;
+    private final String LOCATION_MESSAGE = "com.example.map.message";
+    private static final String TAG = "MainActivity";
+    private static final int ERROR_DIALOG_REQUEST = 9001;
+
+    private TextView name_text, mail_text, storename_head, addressText;
     private EditText storeName, userName, street, city, state, pincode, phone;
     private String userType = "Customer";
     private RadioGroup radioGroup;
     private RadioButton radioButton;
     private FloatingActionButton doneButton;
+    private AppCompatButton googleLocationButton;
     private ProgressDialog progressDialog;
+
+    private String addressString;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +62,8 @@ public class Registration extends AppCompatActivity{
         storename_head = findViewById(R.id.storeName_head);
         radioGroup = findViewById(R.id.userGroup);
         storeName = findViewById(R.id.storeName);
+        googleLocationButton = findViewById(R.id.google_location_btn);
+        addressText = findViewById(R.id.address_text);
 
         progressDialog = new ProgressDialog(Registration.this);
         progressDialog.setMessage("Registering...");
@@ -86,8 +104,61 @@ public class Registration extends AppCompatActivity{
                 validateAndRegisterUser();
             }
         });
+
+        if(isServiceOK()){
+            init();
+        }
     }
 
+
+    private void init() {
+        googleLocationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startMapActivity();
+            }
+        });
+    }
+
+    private void startMapActivity() {
+        Intent intent = new Intent(Registration.this, MapActivity.class);
+        this.startActivityForResult(intent, REQUEST_CODE_MAP);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == Activity.RESULT_OK && data != null) {
+            Bundle extras = data.getExtras();
+            if(extras != null) {
+                addressString = extras.getString(LOCATION_MESSAGE, "Can not find address");
+                addressText.setText("Your Address:\n" + addressString);
+                addressText.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    public boolean isServiceOK(){
+        Log.d(TAG, "isServiceOK: Checking google services version");
+
+        int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(Registration.this);
+
+        if(available == ConnectionResult.SUCCESS)
+        {
+            Log.d(TAG, "isServiceOK: Google Play Services is working");
+            return true;
+        }
+        else if (GoogleApiAvailability.getInstance().isUserResolvableError(available)){
+            Log.d(TAG, "isServiceOK: an error occured but we can fix it");
+            Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(Registration.this, available, ERROR_DIALOG_REQUEST);
+            dialog.show();
+        }
+        else{
+            Toast.makeText(this,"You can't make a request", Toast.LENGTH_SHORT).show();
+        }
+
+        return false;
+    }
 
     public void radioButtonClicked(View v) {
         int radioId = radioGroup.getCheckedRadioButtonId();
@@ -105,7 +176,7 @@ public class Registration extends AppCompatActivity{
     }
 
     private void validateAndRegisterUser() {
-        User user = new User(mail_text.getText().toString(), userName.getText().toString(), userType.toLowerCase(), storeName.getText().toString(), phone.getText().toString(), "streetName", "1234", "cityName", "stateName");
+        User user = new User(mail_text.getText().toString(), userName.getText().toString(), userType.toLowerCase(), storeName.getText().toString(), phone.getText().toString(), addressString);
         postNewUser(user);
     }
 

@@ -18,10 +18,7 @@ public class Preferences {
     private static final String USER_TYPE = "userType";
     private static final String USER_STORE_NAME = "storeName";
     private static final String USER_PHONE = "userPhone";
-    private static final String USER_ADDRESS_STREET = "addressStreet";
-    private static final String USER_ADDRESS_PINCODE = "addressPincode";
-    private static final String USER_ADDRESS_CITY = "addressCity";
-    private static final String USER_ADDRESS_STATE = "addressState";
+    private static final String USER_ADDRESS_TEXT = "userAddressText";
 
     private Preferences(Context context) {
         sharedPreferences = context.getSharedPreferences(USER_INFO, Context.MODE_PRIVATE);
@@ -51,10 +48,7 @@ public class Preferences {
         editor.putString(USER_STORE_NAME, user.storeName);
         editor.putString(USER_PHONE, user.phone);
         if(user.address != null) {
-            editor.putString(USER_ADDRESS_STREET, user.address.street);
-            editor.putString(USER_ADDRESS_PINCODE, user.address.pincode);
-            editor.putString(USER_ADDRESS_CITY, user.address.city);
-            editor.putString(USER_ADDRESS_STATE, user.address.state);
+            editor.putString(USER_ADDRESS_TEXT, user.address.addressText);
         }
 
         editor.commit();

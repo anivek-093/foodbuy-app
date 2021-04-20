@@ -59,15 +59,12 @@ public class User {
                 String userType,
                 String storeName,
                 String phone,
-                String street,
-                String pincode,
-                String city,
-                String state) {
+                String addressText) {
         this.email = email;
         this.name = name;
         this.phone = phone;
         this.storeName = storeName;
         this.userType = userType;
-        this.address = new Address(street, pincode, city, state);
+        this.address = new Address(addressText);
     }
 }
