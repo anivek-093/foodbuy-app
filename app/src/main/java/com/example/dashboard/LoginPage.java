@@ -128,7 +128,7 @@ public class LoginPage extends AppCompatActivity {
         click.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(LoginPage.this, "Haan click ho rha hai bc", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginPage.this, "click", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -245,6 +245,8 @@ public class LoginPage extends AppCompatActivity {
                         preferences.saveUser(response.body().user);
 
                         Intent intent = new Intent(LoginPage.this, MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                     }
                     else {
@@ -253,6 +255,8 @@ public class LoginPage extends AppCompatActivity {
                         bundle.putString("name", user.getDisplayName());
                         bundle.putString("mail", user.getEmail());
                         intent.putExtras(bundle);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                     }
                 }

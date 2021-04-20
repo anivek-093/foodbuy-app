@@ -7,6 +7,7 @@ import com.example.dashboard.model.User;
 import com.example.dashboard.model.UserResponseObject;
 import com.example.dashboard.model.order.OrderRequest;
 import com.example.dashboard.model.order.OrderResponse;
+import com.example.dashboard.model.order.UserOrdersResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -50,4 +51,7 @@ public interface DataService {
     Call<OrderResponse> placeOrder(
             @Body OrderRequest orderRequest
     );
+
+    @GET("/orders")
+    Call<UserOrdersResponse> getOrdersByUserId(@Query("buyerId") String userId);
 }
