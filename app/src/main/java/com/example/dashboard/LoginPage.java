@@ -244,7 +244,7 @@ public class LoginPage extends AppCompatActivity {
                         Preferences preferences = Preferences.getPreferences(getApplicationContext());
                         preferences.saveUser(response.body().user);
 
-                        Intent intent = new Intent(LoginPage.this, MainActivity.class);
+                        Intent intent = new Intent(LoginPage.this, OtpActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);

@@ -65,6 +65,7 @@
             android:theme="@style/Theme.Nav_Activity.NoActionBar"/>
 
         <activity android:name=".MapActivity"/>
+        <activity android:name=".OtpActivity"/>
     </application>
 
 
