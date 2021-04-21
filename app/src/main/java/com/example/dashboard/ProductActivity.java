@@ -23,7 +23,7 @@ import com.google.android.material.button.MaterialButton;
 import com.squareup.picasso.Picasso;
 
 public class ProductActivity extends AppCompatActivity{
-    private TextView productNameText, productCostText, productTotalText, productDescriptionText, sellerInfoText;
+    private TextView productNameText, productCostText, productTotalText, productDescriptionText, sellerInfoText,productAvailableQuantity;
     private EditText productAddedQuantity;
     private ImageView productImage;
     private MaterialButton addToCartButton;
@@ -46,6 +46,7 @@ public class ProductActivity extends AppCompatActivity{
         productAddedQuantity = findViewById(R.id.activity_product_add_quantity_edit_text);
         productImage = findViewById(R.id.activity_product_image);
         addToCartButton = findViewById(R.id.activity_product_add_to_cart_button);
+        productAvailableQuantity = findViewById(R.id.activity_product_quantity_available);
 
         cartTransactions = new CartTransactions(ProductActivity.this);
 
@@ -56,6 +57,8 @@ public class ProductActivity extends AppCompatActivity{
     private void showProductDetailsAndAddListeners(Product product) {
         productNameText.setText(product.name);
         productCostText.append(MathUtility.truncateFloatToTwoDecimalPlaces(product.price));
+
+        productAvailableQuantity.setText("Available Quantity: " + product.quantity.toString());
 
         productAddedQuantity.setText("1");
         productAddedQuantity.addTextChangedListener(new TextWatcher() {
