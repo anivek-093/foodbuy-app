@@ -112,4 +112,6 @@ public class ProductActivity extends AppCompatActivity{
     private void addProductToCart(Product product) {
         cartTransactions.updateOrInsertInCart(product);
     }
+
+
 }

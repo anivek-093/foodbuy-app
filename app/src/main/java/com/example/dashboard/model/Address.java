@@ -9,7 +9,17 @@ public class Address {
     @SerializedName("addressText")
     public String addressText;
 
-    public Address(String addressText) {
+    @ColumnInfo(name = "longitude")
+    @SerializedName("longitude")
+    public Double longitude;
+
+    @ColumnInfo(name = "latitude")
+    @SerializedName("latitude")
+    public Double latitude;
+
+    public Address(String addressText, Double longitude, Double latitude) {
         this.addressText = addressText;
+        this.longitude = longitude;
+        this.latitude = latitude;
     }
 }

@@ -48,6 +48,7 @@ public class MapActivity extends AppCompatActivity {
     private static final String TAG = "MapActivity";
     public static final String LOCATION_MESSAGE = "com.example.map.message";
     String myLocation;
+    Double longitude, lattitude;
 
     //constants
     private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
@@ -103,6 +104,8 @@ public class MapActivity extends AppCompatActivity {
                 getDeviceLocation();
                 Intent intent = new Intent(MapActivity.this, MainActivity.class);
                 intent.putExtra(LOCATION_MESSAGE, myLocation);
+                intent.putExtra("longitude", longitude);
+                intent.putExtra("latitude", lattitude);
                 MapActivity.this.setResult(Activity.RESULT_OK, intent);
                 MapActivity.this.finish();
             }
@@ -127,6 +130,8 @@ public class MapActivity extends AppCompatActivity {
 
             moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), 15, address.getAddressLine(0));
             myLocation = address.getAddressLine(0);
+            longitude = address.getLongitude();
+            lattitude = address.getLatitude();
         }
     }
 
@@ -154,6 +159,8 @@ public class MapActivity extends AppCompatActivity {
                                 try {
                                     addresses = geocoder.getFromLocation(currentLocation.getLatitude(), currentLocation.getLongitude(), 1);
                                     myLocation = addresses.get(0).getAddressLine(0);
+                                    longitude = addresses.get(0).getLongitude();
+                                    lattitude = addresses.get(0).getLatitude();
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }

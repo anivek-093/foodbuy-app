@@ -63,6 +63,16 @@ public class LoginPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
+
+        Preferences preferences = Preferences.getPreferences(getApplicationContext());
+        if(preferences.getCurrentUser() != null) {
+            Toast.makeText(LoginPage.this, "user found", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(LoginPage.this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
+
         FacebookSdk.sdkInitialize(getApplicationContext());
         if(BuildConfig.DEBUG){
             FacebookSdk.setIsDebugEnabled(true);
