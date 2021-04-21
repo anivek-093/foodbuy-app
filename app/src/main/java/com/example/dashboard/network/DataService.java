@@ -5,6 +5,9 @@ import com.example.dashboard.model.ProductDescription;
 import com.example.dashboard.model.ProductsResponse;
 import com.example.dashboard.model.User;
 import com.example.dashboard.model.UserResponseObject;
+import com.example.dashboard.model.feedback.Feedback;
+import com.example.dashboard.model.feedback.FeedbackGetResponse;
+import com.example.dashboard.model.feedback.FeedbackPostResponse;
 import com.example.dashboard.model.order.OrderRequest;
 import com.example.dashboard.model.order.OrderResponse;
 import com.example.dashboard.model.order.UserOrdersResponse;
@@ -54,4 +57,11 @@ public interface DataService {
 
     @GET("/orders")
     Call<UserOrdersResponse> getOrdersByUserId(@Query("buyerId") String userId);
+
+    @GET("/feedback")
+    Call<FeedbackGetResponse> getFeedbacksByProductId(@Query("productId") String productId);
+
+    @Headers("Content-Type: application/json")
+    @POST("/feedback")
+    Call<FeedbackPostResponse> postFeedback(@Body Feedback feedback);
 }

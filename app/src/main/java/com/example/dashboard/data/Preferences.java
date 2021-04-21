@@ -19,6 +19,9 @@ public class Preferences {
     private static final String USER_STORE_NAME = "storeName";
     private static final String USER_PHONE = "userPhone";
     private static final String USER_ADDRESS_TEXT = "userAddressText";
+    private static final String USER_LONGITUDE = "userLongitude";
+    private static final String USER_LATITUDE = "userLatitude";
+
 
     private Preferences(Context context) {
         sharedPreferences = context.getSharedPreferences(USER_INFO, Context.MODE_PRIVATE);
@@ -49,6 +52,8 @@ public class Preferences {
         editor.putString(USER_PHONE, user.phone);
         if(user.address != null) {
             editor.putString(USER_ADDRESS_TEXT, user.address.addressText);
+            editor.putString(USER_LONGITUDE, Double.toString(user.address.longitude));
+            editor.putString(USER_LATITUDE, Double.toString(user.address.latitude));
         }
 
         editor.commit();

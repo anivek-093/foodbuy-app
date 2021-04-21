@@ -49,6 +49,7 @@ public class Registration extends AppCompatActivity{
     private ProgressDialog progressDialog;
 
     private String addressString;
+    private Double longitude, latitude;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -132,6 +133,8 @@ public class Registration extends AppCompatActivity{
             Bundle extras = data.getExtras();
             if(extras != null) {
                 addressString = extras.getString(LOCATION_MESSAGE, "Can not find address");
+                longitude = extras.getDouble("longitude", 0);
+                latitude = extras.getDouble("latitude", 0);
                 addressText.setText("Your Address:\n" + addressString);
                 addressText.setVisibility(View.VISIBLE);
             }
@@ -176,7 +179,7 @@ public class Registration extends AppCompatActivity{
     }
 
     private void validateAndRegisterUser() {
-        User user = new User(mail_text.getText().toString(), userName.getText().toString(), userType.toLowerCase(), storeName.getText().toString(), phone.getText().toString(), addressString);
+        User user = new User(mail_text.getText().toString(), userName.getText().toString(), userType.toLowerCase(), storeName.getText().toString(), phone.getText().toString(), addressString, longitude, latitude);
         postNewUser(user);
     }
 
