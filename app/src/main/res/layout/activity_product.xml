@@ -62,8 +62,8 @@
         android:id="@+id/activity_product_cost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="44dp"
         android:text="Costs Rs "
         android:textColor="@color/black"
         android:textSize="16sp"
@@ -74,13 +74,27 @@
         android:id="@+id/activity_product_total"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
         android:text="Total: Rs "
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/activity_product_cost"/>
+        app:layout_constraintTop_toBottomOf="@id/activity_product_cost" />
+
+    <TextView
+        android:id="@+id/activity_product_quantity_available"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="4dp"
+        android:text="Available Quantity: "
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/activity_product_cost"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_product_image"
+        app:layout_constraintVertical_bias="0.888" />
 
     <TextView
         android:id="@+id/activity_product_quantity_text"
@@ -93,6 +107,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
 
     <EditText
         android:id="@+id/activity_product_add_quantity_edit_text"

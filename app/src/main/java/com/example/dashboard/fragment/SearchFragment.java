@@ -3,9 +3,11 @@ package com.example.dashboard.fragment;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -57,6 +59,17 @@ public class SearchFragment extends Fragment {
 
         searchProgressDialog = new ProgressDialog(getContext());
         searchProgressDialog.setMessage("Finding products...");
+
+        searchText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if(actionId == EditorInfo.IME_ACTION_SEARCH || actionId == EditorInfo.IME_ACTION_DONE
+                        ||event.getAction() == KeyEvent.ACTION_DOWN || event.getAction() == KeyEvent.KEYCODE_ENTER){
+                    getProductsWithSearchText(searchText.getText().toString());
+                }
+                return false;
+            }
+        });
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
